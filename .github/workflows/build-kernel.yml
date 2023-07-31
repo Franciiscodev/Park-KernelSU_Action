@@ -153,13 +153,7 @@ jobs:
             echo "HAVE_SOURCE_BOOT_IMAGE=true" >> $GITHUB_ENV
         fi
   
-    - name: 开启KSU
-      if: env.ENABLE_KERNELSU == 'false'
-      run: |
-        cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
-        curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -s ${{ env.KERNELSU_TAG }}
-        echo "UPLOADNAME=-KernelSU" >> $GITHUB_ENV
-
+  
     - name: 开启补充内核配置
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace/android-kernel
